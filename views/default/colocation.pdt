@@ -1,0 +1,84 @@
+			
+			<link rel="stylesheet" type="text/css" href="<?= str_replace('client/',"",$this->base_uri) ?>components/modules/universal_server_module/views/default/images/style.css">
+                 
+                 <h4><?= Language::_("UniversalServerModule.colocation", true); ?></h4>     
+                 
+             <?php 
+              $rack_size = 20;
+              $rack_colo = $colo_u;
+              $rack_pos = $colo_pos;
+        
+        		if($rack_pos < $rack_colo){$rack_colo = $rack_pos;}
+        		
+        	  $rack_image = $rack_colo;
+        	  
+        		if($rack_colo > 8){$rack_image = 9;}
+        	  
+              $up_racks = ($rack_size - ($rack_pos + 1));
+              $down_racks = ($rack_size - ($rack_pos - 1)) - $rack_colo;
+            ?>
+              
+ 
+        <div class="racket">
+            <table style="display: inline-block;">
+            	<tr>
+            		<td>
+            
+            <div class="rack">
+            	<table>
+  					
+  				<?php
+  					//Up Racks
+					$i = 0;
+					while ($i < $up_racks) {
+				?>
+      					 <tr style="height: 25px;"><td><div></div></td></tr>
+      			<?php
+  						 $i++;
+					}
+				
+					//Colocated Server
+				?>
+					<tr style="height: <?= (25 * $rack_colo); ?>px; background-image: url(<?= str_replace('client/',"",$this->base_uri); ?>components/modules/universal_server_module/views/default/images/racku_<?= $rack_image; ?>.png); background-color: #000;"><td><div><?= $ded_hostname; ?></div></td></tr>
+				
+				<?php
+  					//Down Racks
+					$i = 0;
+					while ($i < $down_racks) {
+				?>
+      					 <tr style="height: 25px;"><td><div></div></td></tr>
+      			<?php
+  						 $i++;
+					}
+				?>
+
+            	</table>
+           		 </div>
+           	
+           	</td>
+           		<td style=" padding-top: 15px; width: 40px;">
+           			 <table style=" width: 100%; ">
+           			 	<?php
+           			 		$i = 0;
+							while ($i < $rack_size) {
+						?>
+      					 		<tr style="height: 25px; border-bottom: 1px dashed #666;"><td><?= $i; ?> U</td></tr>
+  						 <?php
+  						 		$i++;
+							}
+						 ?>
+
+						</table>
+           			 </td>
+           		   </tr>
+           		</table>
+           	</div>
+           		
+           		        <div class="info_colo">
+           			 		<div><b><i class="fa fa-building"></i> <?= Language::_("UniversalServerModule.datacenter", true); ?>:</b> <?php $this->Html->_($colo_datacenter); ?></div>
+           			 		<div><b><i class="fa fa-list-ol"></i> <?= Language::_("UniversalServerModule.ubication", true); ?>:</b> Room <?php $this->Html->_($colo_room); ?> Rack <?php $this->Html->_($colo_rack); ?> Floor <?php $this->Html->_($colo_floor); ?></div>
+           			 		<div><b><i class="fa fa-hdd-o"></i> <?= Language::_("UniversalServerModule.colocation", true); ?>:</b> <?php $this->Html->_($colo_u); ?> U</div>
+           			 		<div><b><i class="fa fa-dot-circle-o"></i> <?= Language::_("UniversalServerModule.position", true); ?>:</b> <?php $this->Html->_($colo_pos); ?> U</div>
+           			 		<div><b><i class="fa fa-tachometer"></i> <?= Language::_("UniversalServerModule.weight", true); ?>:</b> <?php $this->Html->_($colo_weight); ?> Kg</div>
+           			 	</div>
+    

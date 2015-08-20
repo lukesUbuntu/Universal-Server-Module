@@ -1,0 +1,51 @@
+	<?php
+		//Get Main IP
+		    $ded_ip = $service_fields->ded_ips;
+            $ded_ip = explode("-", $ded_ip);
+            $ded_ip = trim($ded_ip[0]);
+		//Get OS Name
+			$os = $service_fields->ded_os;
+      		$os = str_replace("centos","CentOS", $os);
+      		$os = str_replace("centos7","CentOS 7", $os);
+      		$os = str_replace("centos6","CentOS 6", $os);
+      		$os = str_replace("centos5","CentOS 5", $os);
+      		$os = str_replace("fedora","Fedora", $os);
+      		$os = str_replace("fedora7","Fedora 7", $os);
+      		$os = str_replace("fedora6","Fedora 6", $os);
+      		$os = str_replace("fedora5","Fedora 5", $os);
+      		$os = str_replace("suse","Open Suse", $os);
+      		$os = str_replace("suse7","Open Suse 7", $os);
+      		$os = str_replace("suse6","Open Suse 6", $os);
+      		$os = str_replace("suse5","Open Suse 5", $os);
+      		$os = str_replace("debian","Debian", $os);
+      		$os = str_replace("debian7","Debian 7", $os);
+      		$os = str_replace("debian6","Debian 6", $os);
+      		$os = str_replace("ubuntu","Ubuntu", $os);
+      		$os = str_replace("ubuntu14","Ubuntu 14", $os);
+      		$os = str_replace("ubuntu13","Ubuntu 13", $os);
+      		$os = str_replace("windows","Windows", $os);
+	?>
+	<div class="table-responsive">
+		<table class="table table-curved table-striped">
+			<thead>
+				<tr>
+					<th><i class="fa fa-share fa-flip-vertical"></i></th>
+					<th><?php $this->_("UniversalServerModule.hostname");?></th>
+					<th><?php $this->_("UniversalServerModule.operativesystem");?></th>
+					<th><?php $this->_("UniversalServerModule.user");?></th>
+					<th><?php $this->_("UniversalServerModule.pass");?></th>
+					<th>IP</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td></td>
+                    <td><?php $this->Html->_($service_fields->ded_hostname);?></td>
+                    <td><?php $this->Html->_($os);?></td>
+					<td>root</td>
+                    <td><?php $this->Html->_($service_fields->root_pass);?></td>
+                    <td><?php $this->Html->_($ded_ip);?></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>

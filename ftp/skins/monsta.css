@@ -1,0 +1,300 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500");
+
+/* General Format */
+   	input[type="submit"]{
+    		border: 1px solid #3daee9 !important;
+    		-webkit-box-shadow: none !important;
+    		-moz-box-shadow: none !important;
+    		-ms-box-shadow: none !important;
+    		-khtml-box-shadow: none !important;
+    		-box-shadow: none !important;
+    		border-radius: 3px !important;
+    		-khtml-border-radius: 3px;
+    		-moz-border-radius: 3px;
+    		-webkit-border-radius: 3px;
+    		outline: 0;
+    		-webkit-transition: 0.4s border-color ease-in-out;
+    		transition: 0.4s border-color ease-in-out;
+    		cursor: pointer;
+    		filter: alpha(opacity=0);
+    		-khtml-appearance: none;
+    		-webkit-appearance: none;
+    		padding: 6px 12px 6px 12px;
+    		background: #3daee9;
+    		font-size: 13px;
+    		color: #fff !important;
+		}
+
+	input[type="submit"]:focus{
+    		border: 1px solid #3daee9 !important;
+    		outline: 0 !important;
+		}
+
+    	.form-control {
+    		border: 1px solid #ccc !important;
+    		-webkit-box-shadow: none !important;
+    		-moz-box-shadow: none !important;
+    		-ms-box-shadow: none !important;
+    		-khtml-box-shadow: none !important;
+    		-box-shadow: none !important;
+    		border-radius: 0px !important;
+    		-khtml-border-radius: 0px !important;
+    		-moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+    		-webkit-border-radius: 0px !important;
+    		outline: 0;
+    		cursor: pointer;
+    		filter: alpha(opacity=0);
+    		-khtml-appearance: none;
+    		-webkit-appearance: none;
+    		padding: 6px 2px 6px 12px;
+    		width: 96%;
+		}
+
+		.form-control:focus {
+    		border: 1px solid #3daee9 !important;
+    		outline: 0 !important;
+    		-webkit-transition: 0.4s border-color ease-in-out;
+    		transition: 0.4s border-color ease-in-out;
+		}
+	
+	#loginFormContent{color: #687081 !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: bold;}
+
+	body{font-size: 15px;}
+	
+    a:link {
+        color: #2075B8;
+    }
+    
+    hr {
+        background-color: silver;
+        color: silver;
+    }
+
+    progress {
+        background-color: #FCFFD2;
+    }
+
+/* AJAX Content Window */
+    
+    #ajaxContentWindow {
+        border-bottom: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+    }
+    
+/* Form Error Background */
+
+    .bgFormError {
+        background-color: red;
+    }
+    
+/* Context Menu */
+
+    #contextMenu {
+        background-color: #F0F0EE;
+        border-color: #CCCCCC;
+    }
+    
+/* Context Menu Divider */
+    
+    .contextMenuDivider {
+        border-top-color: #322F30;
+    }
+    
+/* Context Menu Inactive */
+
+    .contextMenuDivInactive {
+        color: grey;
+    }
+    
+/* Context Menu MouseOver */
+    
+    .contextMenuDivMouseOver {
+        background-color: blue;
+        color: white;
+    }
+    
+/* Drag & Drop Check */
+
+    #dropFilesCheckDiv {
+        background-color: white;
+        border-color: #404040;
+    }
+    
+    .dropFilesCheckPassColor {
+        color: green;
+    }
+    
+    .dropFilesCheckFailColor {
+        color: red;
+    }
+    
+/* File Edit Window */
+
+    #editContent { 
+        border-color: #404040;
+    }
+    
+/* Footer Div */
+    
+    #footerDiv {
+        background-color: #fff;
+    }
+    
+/* FTP Action Buttons */    
+    
+    #ftpActionButtonsDiv {
+        background-color: #fff;
+        border-top-color: #fff;
+    }
+
+/* FTP File Listing Table */
+
+    #ftpTable {
+        border-top-color: #404040;
+    }
+    
+/* FTP File Listing Header & Rows */
+
+    .ftpTableHeading {
+        background-color: #404040;
+        border-left-color: white;
+        color: white;
+    }
+    
+    /* header with no formatting */
+    .ftpTableHeadingNf {
+        background-color: #404040;
+    }
+    
+    .trBg0 {
+        background-color: #EAEAEA;
+    }
+    
+    .trBg1 {
+        background-color: white;
+    }
+    
+
+/* Host/User Info Box */
+    
+    #hostInfoDiv {
+        background-color: white;
+        border-color: #404040;
+        color: green;
+    }
+    
+        #hostInfoDiv span {
+            color: black;
+        }
+        
+/* Login Form */
+        
+    #loginForm {
+        border-color: #404040;
+    }
+    
+/* Login Form Error */
+
+    #loginFormError {
+        background-color: white;
+        border-color: red;
+        color: red;
+    }
+    
+/* Login Form Title */
+
+    #loginFormTitle {
+        background-color: #404040;
+        border-bottom-color: #404040;
+        color: white;
+    }
+    
+/* Login Form Content */
+    
+    #loginFormContent {
+        background-color: #EAEAEA;
+        padding: 0px;
+    }
+    
+/* Pop-up Border */
+
+    #popupFrame {
+        border-color: black;
+    }
+    
+/* Pop-up Body */
+
+    #popupBodyAction {
+        background-color: white;
+        border-left-color: green;
+        border-right-color: green;
+    }
+    
+    #popupBodyError {
+        background-color: white;
+        border-left-color: red;
+        border-right-color: red;
+    }
+    
+/* Pop-up Footer */
+
+    #popupFooterAction {
+        background-color: white;
+        border-left-color: green;
+        border-bottom-color: green;
+        border-right-color: green;
+    }
+    
+    #popupFooterError {
+        background-color: white;
+        border-left-color: red;
+        border-bottom-color: red;
+        border-right-color: red;
+    }
+
+/* Pop-up Header */
+
+    #popupHeaderAction {
+        background-color: white;
+        color: green;
+        border-color-left: green;
+        border-color-right: green;
+    }
+    
+    #popupHeaderError {
+        background-color: white;
+        color: red;
+        border-color-left: red;
+        border-color-right: red;
+    }
+    
+    
+/* Progress Close Button */
+
+    .progressClose {
+        border-color: gray;
+        color: gray;
+    }
+    
+    .progressClose:hover {
+        border-color: black;
+        color: black;
+    }
+    
+/* Size Error Span */
+
+    .sizeErrorSpan {
+        color: red;
+    }
+
+/* Transferring to FTP */
+    
+    .transferringSpan {
+        color: green;
+    }
+    
+/* Upload Progress Window */
+    
+    #uploadProgressDiv {
+        border-bottom-color: #404040;
+    }

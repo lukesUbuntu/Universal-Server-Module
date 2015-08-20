@@ -1,0 +1,99 @@
+				<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+				<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+				<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+				<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+								
+				  <h4><?= Language::_("UniversalServerModule.bandwidth", true); ?> - <?= Language::_("UniversalServerModule.month", true); ?> [MB]</h4>
+				  
+				  <div id="band-monthly"></div>
+				  
+				  <h4><?= Language::_("UniversalServerModule.bandwidth", true); ?> - <?= Language::_("UniversalServerModule.week", true); ?> [MB]</h4>
+				  
+				  <div id="band-weekly"></div>
+				  
+				  <h4><?= Language::_("UniversalServerModule.bandwidth", true); ?> - <?= Language::_("UniversalServerModule.day", true); ?> [MB]</h4>
+				  
+				  <div id="band-daily"></div>
+				  
+				  <?php
+				  	$band_month_in = array();
+				  	foreach($arr[0]->graphDataMonthly->traffic_in as $index => $val ) { $band_month_in[$index] = $val; }
+				  	
+				  	$band_month_out = array();
+				  	foreach($arr[0]->graphDataMonthly->traffic_out as $index => $val ) { $band_month_out[$index] = $val; }
+
+				  	$band_week_in = array();
+				  	foreach($arr[0]->graphDataWeekly->traffic_in as $index => $val ) { $band_week_in[$index] = $val; }
+
+				  	$band_week_out = array();
+				  	foreach($arr[0]->graphDataWeekly->traffic_out as $index => $val ) { $band_week_out[$index] = $val; }
+
+				  	$band_day_in = array();
+				  	foreach($arr[0]->graphDataDaily->traffic_in as $index => $val ) { $band_day_in[$index] = $val; }
+
+				  	$band_day_out = array();
+				  	foreach($arr[0]->graphDataDaily->traffic_out as $index => $val ) { $band_day_out[$index] = $val; }
+				  ?>
+				  
+				  <script>
+				  Morris.Area({
+  					element: 'band-monthly',
+ 					data: [
+ 				<?php
+ 				   foreach($band_month_in as $index => $val ) {
+ 				?>
+ 				      { y: '<?= date('d/m/Y', $index); ?>', a: <?= bytes2Mb($val); ?>, b: <?= bytes2Mb($band_month_out[$index]); ?>},
+				<?php
+				   }
+ 				?>
+				    ],
+				   xkey: 'y',
+				   ykeys: ['a', 'b'],
+				   lineColors: ['#199ee6', '#8fce35'],
+				   labels: ['In', 'Out'],
+				   parseTime: false,
+				   pointSize: '0px'
+				  });
+
+				  Morris.Area({
+  					element: 'band-weekly',
+ 					data: [
+ 				<?php
+ 				   foreach($band_week_in as $index => $val ) {
+ 				?>
+ 				      { y: '<?= date('d/m/Y', $index); ?>', a: <?= bytes2Mb($val); ?>, b: <?= bytes2Mb($band_week_out[$index]); ?>},
+				<?php
+				   }
+ 				?>
+				    ],
+				   xkey: 'y',
+				   ykeys: ['a', 'b'],
+				   lineColors: ['#199ee6', '#8fce35'],
+				   labels: ['In', 'Out'],
+				   parseTime: false,
+				   pointSize: '0px'
+				  });
+
+				  Morris.Area({
+  					element: 'band-daily',
+ 					data: [
+ 				<?php
+ 				   foreach($band_day_in as $index => $val ) {
+ 				?>
+ 				      { y: '<?= date('g:i a', $index); ?>', a: <?= bytes2Mb($val); ?>, b: <?= bytes2Mb($band_day_out[$index]); ?>},
+				<?php
+				   }
+ 				?>
+				    ],
+				   xkey: 'y',
+				   ykeys: ['a', 'b'],
+				   lineColors: ['#199ee6', '#8fce35'],
+				   labels: ['In', 'Out'],
+				   parseTime: false,
+				   pointSize: '0px'
+				  });
+				  </script>
+
+			      <hr>
+			      <font style="color: #ccc;"><i><?php echo Language::_("UniversalServerModule.last_update", true).'</i> '.date('d').'/'.date('m').'/'.date('Y').' '.date('g').':'.date('i').' '.date('A'); ?> </font>
+			      

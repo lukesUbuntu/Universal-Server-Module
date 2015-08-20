@@ -1,0 +1,101 @@
+						<style>
+							#web_cap{position: absolute;top: 50px;right: 3%;height: 200px; border: 1px solid #ddd;}
+							#web_cap_title{display: none;}
+							@media (max-width: 750px) { #web_cap{position: relative; top: auto; right: auto; width: 100%; height: auto; border: none;} #web_cap_title{display: block;} }
+						</style>
+	
+<?php if(!empty($_GET['on'])){ ?>						
+	<?php if($server_on_exe){ ?>
+		<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block; background: rgba(0,0,0,0.5);"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" onclick="$('.modal').fadeOut();" class="close" data-dismiss="modal" aria-hidden="true">×</button><h4 class="modal-title" id="myModalLabel"><?= Language::_("UniversalServerModule.server", true).' '.$ded_ip; ?></h4></div><div class="modal-body"><?= Language::_("UniversalServerModule.server_on_ok", true); ?></div></div></div></div>
+	<?php } else { ?>
+		<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block; background: rgba(0,0,0,0.5);"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" onclick="$('.modal').fadeOut();" class="close" data-dismiss="modal" aria-hidden="true">×</button><h4 class="modal-title" id="myModalLabel"><?= Language::_("UniversalServerModule.server", true).' '.$ded_ip; ?></h4></div><div class="modal-body"><?= Language::_("UniversalServerModule.server_on_error", true); ?></div></div></div></div>
+	<?php } ?>
+<?php } ?>
+<?php if(!empty($_GET['off'])){ ?>						
+	<?php if($server_off_exe){ ?>
+		<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block; background: rgba(0,0,0,0.5);"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" onclick="$('.modal').fadeOut();" class="close" data-dismiss="modal" aria-hidden="true">×</button><h4 class="modal-title" id="myModalLabel"><?= Language::_("UniversalServerModule.server", true).' '.$ded_ip; ?></h4></div><div class="modal-body"><?= Language::_("UniversalServerModule.server_off_ok", true); ?></div></div></div></div>
+	<?php } else { ?>
+		<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block; background: rgba(0,0,0,0.5);"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" onclick="$('.modal').fadeOut();" class="close" data-dismiss="modal" aria-hidden="true">×</button><h4 class="modal-title" id="myModalLabel"><?= Language::_("UniversalServerModule.server", true).' '.$ded_ip; ?></h4></div><div class="modal-body"><?= Language::_("UniversalServerModule.server_off_error", true); ?></div></div></div></div>
+	<?php } ?>
+<?php } ?>
+<?php if(!empty($_GET['reset'])){ ?>							
+	<?php if($server_reset_exe){ ?>
+		<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block; background: rgba(0,0,0,0.5);"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" onclick="$('.modal').fadeOut();" class="close" data-dismiss="modal" aria-hidden="true">×</button><h4 class="modal-title" id="myModalLabel"><?= Language::_("UniversalServerModule.server", true).' '.$ded_ip; ?></h4></div><div class="modal-body"><?= Language::_("UniversalServerModule.server_reset_ok", true); ?></div></div></div></div>
+	<?php } else { ?>
+		<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block; background: rgba(0,0,0,0.5);"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" onclick="$('.modal').fadeOut();" class="close" data-dismiss="modal" aria-hidden="true">×</button><h4 class="modal-title" id="myModalLabel"><?= Language::_("UniversalServerModule.server", true).' '.$ded_ip; ?></h4></div><div class="modal-body"><?= Language::_("UniversalServerModule.server_reset_error", true); ?></div></div></div></div>
+	<?php } ?>
+<?php } ?>
+
+<h4><?= Language::_("UniversalServerModule.moreinfo", true); ?></h4><br />
+
+<?php
+	    foreach($servicefields as $field) {		 	            
+            if(strpos($field['key'], "ded_") === 0 ) {            
+            	$icon_awesome = 'fa-cogs';
+				if(preg_match("/HDD/i", $field['label'])){ $icon_awesome = 'fa-hdd-o'; }
+				if(preg_match("/CPU/i", $field['label'])){ $icon_awesome = 'fa-area-chart'; }
+				if(preg_match("/RAM/i", $field['label'])){ $icon_awesome = 'fa-database'; }
+				if(preg_match("/Network/i", $field['label'])){ $icon_awesome = 'fa-sitemap'; }
+				if(preg_match("/IP/i", $field['label'])){ $icon_awesome = 'fa-sitemap'; }
+				if(preg_match("/Hostname/i", $field['label'])){ $icon_awesome = 'fa-globe'; }
+				
+            	$value = $field['value'];
+            	
+				//Parse OS Values **********************************
+              	$value = str_replace("centos","CentOS ", $value);
+              	$value = str_replace("fedora","Fedora ", $value);
+              	$value = str_replace("suse","Open Suse ", $value);
+              	$value = str_replace("debian","Debian ", $value);
+              	$value = str_replace("ubuntu","Ubuntu ", $value);
+              	$value = str_replace("freebsd","FreeBSD ", $value);
+              	$value = str_replace("windows","Windows Server ", $value);
+              			
+              	//Parse HDD Values *********************************
+              	$value = str_replace("tbhdd"," TB 7200RPM SATA-2 HDD", $value);
+              	$value = str_replace("tbssd"," TB Enterprise-Class SSD", $value);
+              	$value = str_replace("gbhdd"," GB 7200RPM SATA-2 HDD", $value);
+              	$value = str_replace("gbssd"," GB Enterprise-Class SSD", $value);
+              			
+              	//Parse CPU Values *********************************
+              	$value = str_replace("C2758","Intel Atom Processor C2758 (8 Cores)", $value);
+              			
+              	//Parse RAM Values *********************************
+              	$value = str_replace("gbRAM"," GB DDR3 ECC Memory", $value);
+              			
+                //Parse Networks Values ****************************
+              	$value = str_replace("gbpsNET["," Gbps Simetric Port - Bandwidth ", $value);
+              	$value = str_replace("mbpsNET["," Mbps Simetric Port - Bandwidth ", $value);
+              	$value = str_replace("]NET"," GB", $value);
+?>
+              <p><b><i class="fa <?= $icon_awesome; ?>" style="font-size: 20px; width: 30px;"></i><?= $field['label']; ?>:</b> <?= $value; ?></p><hr>
+<?php
+            }
+         }
+?>
+			<p><b><i class="fa fa-dashboard" style="font-size: 20px; width: 30px;"></i>Control Panel:</b> <?= $cpanel; ?> </p>
+			
+			<br><font style="color: #888; font-size: 20px;"><?= Language::_("UniversalServerModule.server_information", true); ?>:</font><hr>
+              	<center><div style="padding: 30px; text-align: center; display: inline-block; color: <?= $color_ded_sta; ?>; vertical-align: middle; width: 40%;"><i class="fa fa-power-off" style="font-size: 60px;"></i><br><font style="font-size: 25px; font-weight: 300;"><?= $status_ded; ?></font></div>
+              	<div style="text-align: center; display: inline-block; color: #008000; vertical-align: middle;  width: 40%;">
+              	
+              	<?php if(!empty($row->meta->service_code_on_button)){ ?>
+              		<a href="?on=true"><button type="button" style=" margin-top: 10px; margin-right: 10px;" class="btn btn-success"><i class="fa fa-dashboard"></i> <?= Language::_("UniversalServerModule.on", true); ?></button></a>
+              	<?php } ?>
+
+              	<?php if(ItsSshActivated($server, $port, $user, $pass) || !empty($row->meta->service_code_reset_button)){ ?>
+              		<a href="?reset=true"><button type="button" style=" margin-top: 10px; margin-right: 10px;" class="btn btn-warning"><i class="fa fa-dashboard"></i> <?= Language::_("UniversalServerModule.reset", true); ?></button></a>
+              	<?php } ?>
+              			
+              	<?php if(ItsSshActivated($server, $port, $user, $pass) || !empty($row->meta->service_code_off_button)){ ?>
+              		<a href="?off=true"><button type="button" style=" margin-top: 10px; margin-right: 10px;" class="btn btn-danger"><i class="fa fa-dashboard"></i> <?= Language::_("UniversalServerModule.off", true); ?></button></a>
+              	<?php } ?>
+              			
+              	<?php if(!empty($control_url)){ ?>
+              		<a href="<?= $control_url; ?>" target="_blank"><button type="button" style=" margin-top: 10px; margin-right: 10px;" class="btn btn-default"><i class="fa fa-dashboard"></i> <?= Language::_("UniversalServerModule.control_panel", true); ?></button></a>
+              	<?php } ?>
+              	
+              	</div></center>
+              	<?php if($f['status'] == 'finished'){ ?>
+              		<span id="web_cap_title"><br><font style="color: #888; font-size: 20px;">Live Screenshot:</font><hr></span>
+					<img src="<?= str_replace("http:","https:", $f['image_url']); ?>" id="web_cap"/>
+				<?php } ?>

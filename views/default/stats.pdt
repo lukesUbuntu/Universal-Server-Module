@@ -1,0 +1,62 @@
+				  <script src="<?= str_replace('client/',"",$this->base_uri); ?>components/modules/universal_server_module/views/default/images/raphael.2.1.0.min.js"></script>
+				  <script src="<?= str_replace('client/',"",$this->base_uri); ?>components/modules/universal_server_module/views/default/images/justgage.1.0.1.min.js"></script>
+				  
+				  <h4><?= Language::_("UniversalServerModule.server_stats", true); ?></h4>
+				  
+				<div id="gages" style="text-align: center;">
+				  <div id="cpu" style="display: inline-block; margin-left: -30px; margin-right: -30px;"></div>
+				  <div id="ram" style="display: inline-block; margin-left: -30px; margin-right: -30px;"></div>
+				  <div id="hdd" style="display: inline-block; margin-left: -30px; margin-right: -30px;"></div>
+				</div>
+				  
+				  <script>
+					  var g = new JustGage({
+				      id: "cpu",
+				      value: <?= (round($cpu, 2) * 10); ?>,
+				      min: 0,
+				      max: 100,
+				      title: "CPU Load",
+				      label: "% usage",
+    				  gaugeWidthScale: 0.3,
+       				  levelColors: [
+         				 "#3daee9",
+         				 "#3daee9",
+         				 "#3daee9"
+       				  ]
+					  });
+					  
+					  var g = new JustGage({
+				      id: "ram",
+				      value: <?= $mem_used; ?>,
+				      min: 0,
+				      max: <?= $mem_total; ?>,
+				      title: "RAM Usage",
+				      label: "Megabytes",
+    				  gaugeWidthScale: 0.3,
+       				  levelColors: [
+         				 "#3daee9",
+         				 "#3daee9",
+         				 "#3daee9"
+       				  ]
+					  });
+					  
+					  var g = new JustGage({
+				      id: "hdd",
+				      value: <?= round(($hdd_used/1024), 2); ?>,
+				      min: 0,
+				      max: <?= round(($hdd_total / 1024), 2); ?>,
+				      title: "HDD Usage",
+				      label: "Gigabytes",
+    				  gaugeWidthScale: 0.3,
+       				  levelColors: [
+         				 "#3daee9",
+         				 "#3daee9",
+         				 "#3daee9"
+       				  ]
+					  });
+					  
+				  </script>
+			      
+			      <hr>
+			      <font style="color: #ccc;"><i><?php echo Language::_("UniversalServerModule.last_update", true).'</i> '.date('d').'/'.date('m').'/'.date('Y').' '.date('g').':'.date('i').' '.date('A'); ?> </font>
+			      

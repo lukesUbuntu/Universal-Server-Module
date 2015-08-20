@@ -1,0 +1,72 @@
+	<div>
+	<h4><?php $this->_("UniversalServerModule.add_row.service_title");?></h4>
+
+	<?php
+		if(!empty($result)){
+	?>
+			<div class="alert alert-info" style="margin-bottom: 15px;"><p><?php $this->_("UniversalServerModule.action_executed");?><br><?= $result; ?></p></div>
+	<?php } ?>
+	
+
+		<div class="col-md-6">
+			<a href="?update" style="text-decoration: none;"><button class="btn btn-success btn-block"><i class="fa fa-edit"></i> <?php $this->_("UniversalServerModule.update_software");?></button></a>
+		</div>
+		<div class="col-md-6">
+			<a href="?clean" style="text-decoration: none;"><button class="btn btn-warning btn-block"><i class="fa fa-edit"></i> <?php $this->_("UniversalServerModule.clean");?></button></a>
+		</div>
+
+		<div class="col-md-6" style="margin-top: 10px; margin-bottom: 10px;">
+			<a href="#" onclick="$('#password_form').hide(); $('#hostname_form').show();" style="text-decoration: none;"><button class="btn btn-info btn-block"><i class="fa fa-edit"></i> <?php $this->_("UniversalServerModule.change_hostname");?></button></a>
+		</div>
+		<div class="col-md-6" style="margin-top: 10px; margin-bottom: 10px;">
+			<a href="#" onclick="$('#hostname_form').hide(); $('#password_form').show();" style="text-decoration: none;"><button class="btn btn-danger btn-block"><i class="fa fa-edit"></i> <?php $this->_("UniversalServerModule.change_root_pass");?></button></a>
+		</div>
+	</div>
+	
+	<div id="hostname_form" style="margin-top: 20px; margin-bottom: 20px; display:none;">
+	<h4><?php $this->_("UniversalServerModule.change_hostname");?></h4>
+		<?php
+		$this->Form->create();
+		?>
+		<div class="col-md-12">
+			<div class="form-group">
+				<?php
+				$this->Form->label($this->_("UniversalServerModule.hostname", true), "hostname");
+				?>
+				<input type="text" name="hostname" id="hostname" class="form-control" placeholder="">
+			</div>
+		</div>
+		<button class="btn btn-default pull-right">
+			<i class="fa fa-edit"></i> <?php $this->_("UniversalServerModule.change_hostname");?>
+		</button>
+		<?php
+		$this->Form->end();
+		?>
+	</div>
+	
+	<div id="password_form" style="margin-top: 20px; margin-bottom: 20px; display:none;">
+	<h4><?php $this->_("UniversalServerModule.change_root_pass");?></h4>
+		<?php
+		$this->Form->create();
+		?>
+		<div class="col-md-12">
+			<div class="form-group">
+				<?php
+				$this->Form->label($this->_("UniversalServerModule.pass", true), "password");
+				$this->Form->fieldPassword("password", array('id' => "password", 'class'=>"form-control", 'placeholder'=>$this->_("Cpanel.tab_client_actions.field_cpanel_password", true)));
+				?>
+			</div>
+            <div class="form-group">
+				<?php
+				$this->Form->label($this->_("UniversalServerModule.pass", true), "password");
+				$this->Form->fieldPassword("confirm_password", array('id' => "confirm_password", 'class'=>"form-control", 'placeholder'=>$this->_("Cpanel.tab_client_actions.field_cpanel_confirm_password", true)));
+				?>
+			</div>
+		</div>
+		<button class="btn btn-default pull-right">
+			<i class="fa fa-edit"></i> <?php $this->_("UniversalServerModule.change_root_pass");?>
+		</button>
+		<?php
+		$this->Form->end();
+		?>
+	</div>

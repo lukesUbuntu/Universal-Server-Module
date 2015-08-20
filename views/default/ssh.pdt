@@ -1,0 +1,31 @@
+         <h4><?= Language::_("UniversalServerModule.ssh_console", true) ?></h4><br />
+
+        <?php
+         if($_POST['server'] != '' && $_POST['user'] != '' && $_POST['pass'] != ''){
+         	if(!isset($_POST['port'])){ $port = 22; } else { $port = $_POST['port']; }
+         	$host = $_POST['server'];
+         	$user = $_POST['user'];
+         	$pass = $_POST['pass'];
+        ?>
+         	
+         	
+       		<style> .alert{display: none !important;} </style>
+         	<iframe style="width: 100% !important; height: 500px; margin-top: -10px; border: 1px solid #ccc; backround: #000;" border="0" src="https://ssh.cyandark.com/?host=<?= base64_encode($host) ?>&puerto=<?= base64_encode($port) ?>&user=<?= base64_encode($user) ?>&password=<?= base64_encode($pass) ?>"></iframe>
+         	
+         <?php } else { ?>
+         
+       		<style> .alert{display: none !important;} </style>
+       		<form action="" method="post">
+         		<center>
+         			<div>
+         				<div style="width: 95%; text-align: left; margin-bottom: 20px;"><b><?= Language::_("UniversalServerModule.server", true) ?>: </b> <input type="text" name="server" id="server" value="<?php $this->Html->_($ded_ip);?>" class="form-control"></div>
+         				<div style="width: 95%; text-align: left; margin-bottom: 20px;"><b><?= Language::_("UniversalServerModule.port", true) ?>: </b> <input type="text" name="port" id="port" value="22" class="form-control"></div>
+         				<div style="width: 95%; text-align: left; margin-bottom: 20px;"><b><?= Language::_("UniversalServerModule.user", true) ?>: </b> <input type="text" name="user" id="user" value="root" class="form-control"></div>
+         				<div style="width: 95%; text-align: left; margin-bottom: 20px;"><b><?= Language::_("UniversalServerModule.pass", true) ?>: </b> <input type="password" name="pass" id="pass" class="form-control"></div>
+         			</div>
+         		</center>
+         		<button type="submit" class="btn btn-default pull-right"><i class="fa fa-terminal"></i><?= Language::_("UniversalServerModule.connect", true) ?></button>
+         	</form>
+         	
+         <?php } ?>
+         
