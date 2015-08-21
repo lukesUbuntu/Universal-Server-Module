@@ -1893,6 +1893,7 @@ class UniversalServerModule extends Module {
                 	'ssh_console' => array('name' => Language::_("UniversalServerModule.ssh_console", true), 'icon' => "fa fa-terminal"),
                     'ftp_client' => array('name' => Language::_("UniversalServerModule.ftp_client", true), 'icon' => "fa fa-dashboard"),
                  	'stats' => array('name' => Language::_("UniversalServerModule.server_stats", true), 'icon' => "fa fa-area-chart"),
+                    'serveroptions' => array('name' => Language::_("UniversalServerModule.add_row.service_title", true), 'icon' => "fa fa-cloud"),
                  	'colocation' => array('name' => Language::_("UniversalServerModule.colocation", true), 'icon' => "fa fa-building")
                 );
             }
